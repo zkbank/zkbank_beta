@@ -44,10 +44,7 @@ router.get('/open',function (req,res){
 
 router.get('/opid/:opid', function (req,res) {
   let opid = req.params.opid
-  res.send({
-    result: zcash.getOperationResult(opid) || 'noresult',
-    status: zcash.getOperationStatus(opid) || 'nostatus'
-  })
+  res.send(zcash.getOperationResult(opid))
 })
 
 router.get('/show/:privateKey',function (req,res) {
