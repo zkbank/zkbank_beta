@@ -29,7 +29,7 @@ router.get('/test', function(req,res) {
 
 router.get('/open',function (req,res){
   let zaddr = req.query.zaddr
-  let zkey  = req.query.zaddr
+  let zkey  = req.query.zkey
   res.redirect(`/show/${zkey}/?address=${zaddr}`)
 })
 
