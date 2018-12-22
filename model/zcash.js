@@ -4,6 +4,11 @@ function zcashApi(method,params) {
     let xhr = new xmlh.XMLHttpRequest()
     xhr.open('POST', 'http://127.0.0.1:8232',false,'denis','020611')
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    console.log(JSON.stringify({
+        id: 'test',
+        method: method,
+        params: params || []
+    }))
     xhr.send(JSON.stringify({
         id: 'test',
         method: method,
