@@ -35,8 +35,8 @@ module.exports = {
     getBalance:zaddr => zcashApi('z_getbalance', [zaddr]).result.result,
     isValie:  zaddr =>  zcashApi('z_validateaddress', [zaddr]).result.result.isvalid,
     listAddresses: () =>zcashApi('z_listaddresses').result.result,
-    getOperationStatus: opid => zcashApi('z_getoperationstatus',[opid]).result.result,
-    getOperationResult: opid => zcashApi('z_getoperationresult',[opid]).result.result,
+    getOperationStatus: opid => zcashApi('z_getoperationstatus',[opid]),
+    getOperationResult: opid => zcashApi('z_getoperationresult',[opid]),
     send: (from,to,amount,minConfirm,fee) => zcashApi('z_sendmany',[from,[{
         address: to,
         amount: amount
