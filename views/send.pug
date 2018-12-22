@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    form(action='/send' method='POST')
+        div    balance: #{balance}
+        input(name='exportKey' type='hidden' value=123 + 321)
+        div
+            span from
+            input(name='address')
+        div
+            span to
+            input(name='to')
+        div
+            span amount
+            input(type='number')
+        input(type='submit' value='send')
