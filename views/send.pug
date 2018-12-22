@@ -4,7 +4,9 @@ block content
     form(action='/send' method='POST')
         div    balance: #{balance}
         div    address: #{zaddr}
-        div(style="width:30em")    private: #{zkey}
+        div(style="width:30em; overflow-wrap: break-word;") "private:
+            br
+            span= zkey
         input(name='zaddr' type='hidden' value=zaddr)
         input(name='zkey' type='hidden' value=zkey)
         div
