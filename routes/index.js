@@ -17,7 +17,7 @@ router.post('/send', function (req,res) {
   let zaddr = req.body.zaddr
   let zkey = req.body.zkey
   let to = req.body.to
-  let amount = req.body.amount
+  let amount = parseFloat(req.body.amount)
   zcash.importKey(zkey)
   if(zcash.exportKey(zaddr) != zkey)
     res.send('херня какая-то c парой адрес-значение')
