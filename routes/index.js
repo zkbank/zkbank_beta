@@ -35,7 +35,7 @@ router.get('/show/:privateKey',function (req,res) {
     res.send('херня какая-то')
   else
     res.render('send',{
-      balance: zcash.balance(address),
+      balance: zcash.getBalance(address),
       zaddr: address,
       zkey: privateKey
     })
