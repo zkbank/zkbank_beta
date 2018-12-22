@@ -3,6 +3,8 @@ extends layout
 block content
     form(action='/send' method='POST')
         div    balance: #{balance}
+        div    address: #{zaddr}
+        div    private: #{zkey}
         input(name='zaddr' type='hidden' value=zaddr)
         input(name='zkey' type='hidden' value=zkey)
         div
