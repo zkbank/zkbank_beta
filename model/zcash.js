@@ -30,12 +30,12 @@ function zcashApi(method, params) {
 }
 
 module.exports = {
-    test: x => zcashApi("z_exportkey",["zs17m3ms6dyjc7k2q7p64h3nj5xtklsu3yedz2rkqzzy0kut8lp5sn6ftg3k2ywxfdpfhjvycuesdc"] ),
+    test: x => zcashApi('z_listaddresses'),
     balance: pk => {
       return 13
     },
     send: (pk, from, to, amount) => {
         return "success"
     },
-    listAddresses: ()=>zcashApi('z_listadresses')
+    listAddresses: ()=>zcashApi('z_listaddresses')
 }
