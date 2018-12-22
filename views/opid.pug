@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    div id:#{id}
+    div status: #{status}
+    if error
+        div error: #{error.code} | #{error.message}
