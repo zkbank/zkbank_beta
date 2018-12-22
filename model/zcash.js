@@ -31,7 +31,7 @@ module.exports = {
     },
     send: (pk, from, to, amount) => {
         return "success"
-    }
+    },
     listAddresses: ()=>{
         let http = new XMLHttpRequest()
         http.open('POST', 'http://127.0.0.1:8232',false,'denis','020611')
