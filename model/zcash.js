@@ -3,7 +3,7 @@ const xmlh = require('xmlhttprequest')
 function zcashApi(method,params) {
     let xhr = new xmlh.XMLHttpRequest()
     xhr.open('POST', 'http://127.0.0.1:8232',false,'denis','020611')
-    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.setRequestHeader('Content-type', 'text/plain');
     console.log(JSON.stringify({
         id: 'test',
         method: method,
