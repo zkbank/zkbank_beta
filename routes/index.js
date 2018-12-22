@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/newAddress', function(req, res) {
   let zaddr = zcash.newAddress()
   let zkey  = zcash.exportKey(zaddr)
-  res.redirect(`/address/?address=${zkey}`)
+  res.redirect(`/show/?address=${zkey}`)
 })
 
 router.post('/send', function (req,res) {
