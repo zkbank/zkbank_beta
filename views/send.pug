@@ -3,9 +3,9 @@ extends layout
 block content
     form(action='/send' method='POST')
         div    balance: #{balance}
-    input(name='zaddr' type='hidde' value=zaddr)
-    input(name='zkey' type='hidde' value=zkey)
-    div
+        input(name='zaddr' type='hidde' value=zaddr)
+        input(name='zkey' type='hidde' value=zkey)
+        div
             span from
             input(name='address')
         div
