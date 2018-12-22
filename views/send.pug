@@ -2,17 +2,19 @@ extends layout
 
 block content
     form(action='/send' method='POST')
-        div    balance:
-            h1= balance + ' zec'
+
+        h1= balance + ' zec'
         div    address: #{zaddr}
         div(style="width:30em; overflow-wrap: break-word;") private:
             div(style="padding-left:2em")= zkey
-        input(name='zaddr' type='hidden' value=zaddr)
-        input(name='zkey' type='hidden' value=zkey)
-        div
-            span address
-            input(name='to')
-        div
-            span amount
-            input(type='number' step="0.000001" name='amount')
-        input(type='submit' value='send')
+        div(style="padding:2em;border: 1px solid black")
+            h3 transfer
+            input(name='zaddr' type='hidden' value=zaddr)
+            input(name='zkey' type='hidden' value=zkey)
+            div
+                span address
+                input(name='to')
+            div
+                span amount
+                input(type='number' step="0.000001" name='amount')
+            input(type='submit' value='send')
