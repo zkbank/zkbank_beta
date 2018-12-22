@@ -1,6 +1,6 @@
 const xmlh = require('xmlhttprequest')
 
-function zcashApi(method,params) {
+function zcashApi(method, params) {
     let xhr = new xmlh.XMLHttpRequest()
     xhr.open('POST', 'http://127.0.0.1:8232',false,'denis','020611')
     xhr.setRequestHeader('Content-type', 'text/plain');
@@ -9,13 +9,13 @@ function zcashApi(method,params) {
         method: method,
         params: params || []
     }))
-    // xhr.send(JSON.stringify({
-    //     id: 'test',
-    //     method: method,
-    //     params: params || []
-    // }))
-    let b = `{"method": "z_exportkey","params":["zs17m3ms6dyjc7k2q7p64h3nj5xtklsu3yedz2rkqzzy0kut8lp5sn6ftg3k2ywxfdpfhjvycuesdc"],"id":"test"}`
-    xhr.send(b)
+    xhr.send(JSON.stringify({
+        method: method,
+        params: params || [],
+        id: 'test'
+    }))
+    // let b = `{"method": "z_exportkey","params":["zs17m3ms6dyjc7k2q7p64h3nj5xtklsu3yedz2rkqzzy0kut8lp5sn6ftg3k2ywxfdpfhjvycuesdc"],"id":"test"}`
+    // xhr.send(b)
     return (xhr.status != 200) ? {
         success : false,
         result: {
@@ -38,5 +38,5 @@ module.exports = {
     send: (pk, from, to, amount) => {
         return "success"
     },
-    listAddresses: ()=>zcashApi('listadresses')
+    listAddresses: ()=>zcashApi('z_listadresses')
 }
