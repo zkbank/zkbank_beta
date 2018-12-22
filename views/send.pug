@@ -2,11 +2,11 @@ extends layout
 
 block content
     form(action='/send' method='POST')
-        div    balance: #{balance}
+        div    balance:
+            h1= balance + ' zec'
         div    address: #{zaddr}
-        div(style="width:30em; overflow-wrap: break-word;") "private:
-            br
-            span(style="padding-left=2em")= zkey
+        div(style="width:30em; overflow-wrap: break-word;") private:
+            div(style="padding-left:2em")= zkey
         input(name='zaddr' type='hidden' value=zaddr)
         input(name='zkey' type='hidden' value=zkey)
         div
