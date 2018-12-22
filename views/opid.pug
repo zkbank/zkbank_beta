@@ -4,6 +4,6 @@ block content
     div id:#{id}
     div status: #{status}
     if result
-        div result: #{result}
+        div result: #{JSON.stringify(result)}
     if error
         div error: #{error.code} | #{error.message}
