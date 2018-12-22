@@ -23,8 +23,8 @@ router.post('/send', function (req,res) {
     res.send('херня какая-то c парой адрес-значение')
   if(!zcash.isValie(to))
     res.send('с получателем херня какая-то')
-
-  res.send( zcash.send(zaddr,to,amount) )
+  let opid = zcash.send(zaddr,to,amount)
+  res.redirect(`/opid/${opid}`)
 })
 
 router.get('/test', function(req,res) {
@@ -40,6 +40,14 @@ router.get('/open',function (req,res){
   let zaddr = req.query.zaddr
   let zkey  = req.query.zkey
   res.redirect(`/show/${zkey}/?address=${zaddr}`)
+})
+
+router.get('/opid/:opid', function (req,res) {
+  let opid = req.params.opid
+  res.send({
+    result: zcash.getOperationResult(opid) || 'noresult',
+    status: zcash.getOperationStatus(opid) || 'nostatus'
+  })
 })
 
 router.get('/show/:privateKey',function (req,res) {
