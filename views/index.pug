@@ -1,8 +1,10 @@
 extends layout
 
 block content
-  h1 enter your Private Key
-  input(name='pk')
-  input(type='submit' value='apply')
-  h2 or
-    a(href='/newAddress') create new
+  h3 enter your address & Private Key
+  form(action="/open")
+    input(name='zaddr')
+    input(name='zkey')
+    input(type='submit' value='apply')
+  h4 or
+    a(href='/newAddress')   create new

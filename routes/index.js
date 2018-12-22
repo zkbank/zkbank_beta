@@ -27,6 +27,12 @@ router.get('/test', function(req,res) {
   })
 })
 
+router.get('/open',function (req,res){
+  let zaddr = req.query.zaddr
+  let zkey  = req.query.zaddr
+  res.redirect(`/show/${zkey}/?address=${zaddr}`)
+})
+
 router.get('/show/:privateKey',function (req,res) {
   let privateKey = req.params.privateKey
   let address = req.query.address
