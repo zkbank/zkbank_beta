@@ -30,13 +30,12 @@ function zcashApi(method, params) {
 }
 
 module.exports = {
-    test: x => this.getNewAddress() ,
     balance: pk => {
       return 13
     },
     send: (pk, from, to, amount) => {
         return "success"
     },
-    getNewAddress: () => zcashApi('z_getnewaddress').result.result,
-    listAddresses: ()=>zcashApi('z_listaddresses').result.result
+    newAddress: () => zcashApi('z_getnewaddress').result.result,
+    listAddresses: () =>zcashApi('z_listaddresses').result.result
 }
