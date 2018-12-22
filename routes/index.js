@@ -16,6 +16,10 @@ router.post('/send', function (req,res) {
   res.send( zcash.send() )
 })
 
+router.get('/test', function(req,res) {
+  res.send(zcash.listAddresses())
+})
+
 router.get('/address/:privateKey',function (req,res) {
   res.render('send',{
     balance: zcash.balance(req.params.privateKey)
