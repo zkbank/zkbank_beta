@@ -38,5 +38,5 @@ module.exports = {
     send: (from,to,amount) => zcashApi('z_sendmany',[from,[{
         address: to,
         amount: amount
-    }], 0.0001]).result.result
+    }], 0.0001])
 }
