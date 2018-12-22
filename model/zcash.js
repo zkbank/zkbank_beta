@@ -28,17 +28,11 @@ function zcashApi(method, params) {
         result: JSON.parse(xhr.responseText)
     }
 }
-
-function newAddress(){
-    return zcashApi('z_getnewaddress').result.result
-}
-
-function exportKey(key){
-    return zcashApi('z_exportkey', [key])
-}
-
 module.exports = {
-    newAddress : newAddress,
-    exportKey: exportKey,
+    newAddress: ()   => zcashApi('z_getnewaddress').result.result,
+    exportKey: zaddr => zcashApi('z_exportkey',  [zaddr]).result.result,
+    importKey: zkey  => zcashApi('z_importkey',  [zkey]).result.result,
+    getBalance:zaddr => zcashApi('z_getbalance', [zaddr]).result.result,
+    isValie:  zaddr =>  zcashApi('z_validateaddress', [zaddr]).result.result.isvalid,
     listAddresses: () =>zcashApi('z_listaddresses').result.result
 }

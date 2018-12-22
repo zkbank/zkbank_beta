@@ -8,7 +8,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/newAddress', function(req, res) {
-  res.redirect(`/address/234123`)
+  let zaddr = zcash.newAddress()
+  let zkey  = zcash.exportKey(zaddr)
+  res.redirect(`/address/?address=${zkey}`)
 })
 
 router.post('/send', function (req,res) {
@@ -25,10 +27,18 @@ router.get('/test', function(req,res) {
   })
 })
 
-router.get('/address/:privateKey',function (req,res) {
-  res.render('send',{
-    balance: zcash.balance(req.params.privateKey)
-  })
+router.get('/show/:privateKey',function (req,res) {
+  let privateKey = req.params.privateKey
+  let address = req.query.address
+  zcash.importKey(privateKey)
+  if(zcash.exportKey(address) != privateKey)
+    res.send('херня какая-то')
+  else
+    res.render('send',{
+      balance: zcash.balance(address),
+      zaddr: address,
+      zkey: privateKey
+    })
 })
 
 module.exports = router;
