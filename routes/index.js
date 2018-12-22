@@ -14,8 +14,17 @@ router.get('/newAddress', function(req, res) {
 })
 
 router.post('/send', function (req,res) {
-  let pk = req.body.privateKey
-  res.send( zcash.send() )
+  let zaddr = req.body.zaddr
+  let zkey = req.body.zkey
+  let to = req.body.to
+  let amount = req.body.amount
+  zcash.importKey(zkey)
+  if(zcash.exportKey(zaddr) != zkey)
+    res.send('херня какая-то c парой адрес-значение')
+  if(!zcash.isValie(to))
+    res.send('с получателем херня какая-то')
+
+  res.send( zcash.send(zaddr,to,amount) )
 })
 
 router.get('/test', function(req,res) {
@@ -34,16 +43,16 @@ router.get('/open',function (req,res){
 })
 
 router.get('/show/:privateKey',function (req,res) {
-  let privateKey = req.params.privateKey
-  let address = req.query.address
-  zcash.importKey(privateKey)
-  if(zcash.exportKey(address) != privateKey)
+  let zkey = req.params.privateKey
+  let zaddr = req.query.address
+  zcash.importKey(zkey)
+  if(zcash.exportKey(zaddr) != zkey)
     res.send('херня какая-то')
   else
     res.render('send',{
-      balance: zcash.getBalance(address),
-      zaddr: address,
-      zkey: privateKey
+      balance: zcash.getBalance(zaddr),
+      zaddr: zaddr,
+      zkey: zkey
     })
 })
 

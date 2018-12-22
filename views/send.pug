@@ -3,15 +3,12 @@ extends layout
 block content
     form(action='/send' method='POST')
         div    balance: #{balance}
-        input(name='zaddr' type='hidde' value=zaddr)
-        input(name='zkey' type='hidde' value=zkey)
+        input(name='zaddr' type='hidden' value=zaddr)
+        input(name='zkey' type='hidden' value=zkey)
         div
-            span from
-            input(name='address')
-        div
-            span to
+            span address
             input(name='to')
         div
             span amount
-            input(type='number')
+            input(type='number' name='amount')
         input(type='submit' value='send')

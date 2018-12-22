@@ -34,5 +34,9 @@ module.exports = {
     importKey: zkey  => zcashApi('z_importkey',  [zkey]).result.result,
     getBalance:zaddr => zcashApi('z_getbalance', [zaddr]).result.result,
     isValie:  zaddr =>  zcashApi('z_validateaddress', [zaddr]).result.result.isvalid,
-    listAddresses: () =>zcashApi('z_listaddresses').result.result
+    listAddresses: () =>zcashApi('z_listaddresses').result.result,
+    send: (from,to,amount) => zcashApi('z_sendmany',[from,[{
+        address: to,
+        amount: amount
+    }], 0.0001]).result.result
 }
