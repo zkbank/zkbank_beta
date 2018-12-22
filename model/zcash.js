@@ -29,13 +29,16 @@ function zcashApi(method, params) {
     }
 }
 
+function newAddress(){
+    return zcashApi('z_getnewaddress').result.result
+}
+
+function exportKey(key){
+    return zcashApi('z_exportkey', [key])
+}
+
 module.exports = {
-    balance: pk => {
-      return 13
-    },
-    send: (pk, from, to, amount) => {
-        return "success"
-    },
-    newAddress: () => zcashApi('z_getnewaddress').result.result,
+    newAddress : newAddress,
+    exportKey: exportKey,
     listAddresses: () =>zcashApi('z_listaddresses').result.result
 }

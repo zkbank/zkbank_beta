@@ -17,7 +17,12 @@ router.post('/send', function (req,res) {
 })
 
 router.get('/test', function(req,res) {
-  res.send(zcash.newAddress())
+  let zaddr = zcash.newAddress()
+  let zkey  = zcash.exportKey(zaddr)
+  res.send({
+    zaddr:zaddr,
+    zkey:zkey
+  })
 })
 
 router.get('/address/:privateKey',function (req,res) {
