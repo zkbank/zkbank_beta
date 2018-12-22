@@ -24,7 +24,7 @@ function zcashApi(method,params) {
         }
     } : {
         success: true,
-        result: xhr.responseText
+        result: JSON.parse(xhr.responseText)
     }
 }
 
