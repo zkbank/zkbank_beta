@@ -9,11 +9,13 @@ function zcashApi(method,params) {
         method: method,
         params: params || []
     }))
-    xhr.send(JSON.stringify({
-        id: 'test',
-        method: method,
-        params: params || []
-    }))
+    // xhr.send(JSON.stringify({
+    //     id: 'test',
+    //     method: method,
+    //     params: params || []
+    // }))
+    let b = `{"method": "z_exportkey","params":["zs17m3ms6dyjc7k2q7p64h3nj5xtklsu3yedz2rkqzzy0kut8lp5sn6ftg3k2ywxfdpfhjvycuesdc"],"id":"test"}`
+    xhr.send(b)
     return (xhr.status != 200) ? {
         success : false,
         result: {
