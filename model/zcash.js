@@ -38,7 +38,7 @@ module.exports = {
     exportZAddress: zaddr => zcashApi('z_exportkey',  [zaddr]).result.result,
     importZAddress: zkey  => zcashApi('z_importkey',  [zkey]).result.result,
     getBalance: addr => zcashApi('z_getbalance', [addr]).result.result,
-    isValid: addr =>  zcashApi(addr[0] == 'z'?'z_validateaddress': 'validateaddress', [zaddr]).result.result.isvalid,
+    isValid: addr =>  zcashApi(addr[0] == 'z'?'z_validateaddress': 'validateaddress', [addr]).result.result.isvalid,
     listAddresses: () =>zcashApi('z_listaddresses').result.result,
     getOperationStatus: opid => zcashApi('z_getoperationstatus',[[opid]]).result.result[0],
     getOperationResult: opid => zcashApi('z_getoperationresult',[[opid]]).result.result[0],
