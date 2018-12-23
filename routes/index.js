@@ -61,7 +61,7 @@ router.get('/show/:privateKey',function (req,res) {
   }
   else{
     zcash.importZAddress(zkey)
-    if( zcash.exportZAddress(zaddr) != zkey)
+    if( zcash.exportZAddress(addr) != zkey)
       res.send('херня какая-то')
     else
       res.render('send',{
