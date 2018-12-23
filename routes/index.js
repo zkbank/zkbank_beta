@@ -7,6 +7,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/', function (req,res) {
+  res.send('test')
+})
+
 router.get('/newAddress', function(req, res) {
   const zaddr = zcash.newAddress()
   const zkey  = zcash.exportKey(zaddr)
