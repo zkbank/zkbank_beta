@@ -26,15 +26,15 @@ router.post('/send', function (req,res) {
   const zkey = req.body.zkey
   const to = req.body.to
   const amount = parseFloat(req.body.amount)
-  zcash.importZAddress(zkey)
-  if(zcash.exportZAddress(zaddr) != zkey)
-    res.send('херня какая-то c парой адрес-значение')
-  else if(!zcash.isValid(to))
-    res.send('с получателем херня какая-то')
-  else{
-    let opid = zcash.send(zaddr,to,amount)
-    res.redirect(`/opid/${opid}`)
-  }
+    zcash.importZAddress(zkey)
+    if(zcash.exportZAddress(zaddr) != zkey && zcash.exportTAddress(zkey)!= zkey)
+      res.send('херня какая-то c парой адрес-значение')
+    else if(!zcash.isValid(to))
+      res.send('с получателем херня какая-то')
+    else{
+      let opid = zcash.send(zaddr,to,amount)
+      res.redirect(`/opid/${opid}`)
+    }
 })
 
 router.get('/open',function (req,res){
