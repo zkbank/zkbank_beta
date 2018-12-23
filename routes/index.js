@@ -28,12 +28,7 @@ router.post('/send', function (req,res) {
 })
 
 router.get('/test', function(req,res) {
-  let zaddr = zcash.newAddress()
-  let zkey  = zcash.exportKey(zaddr)
-  res.send({
-    zaddr:zaddr,
-    zkey:zkey
-  })
+  res.send('мазафака')
 })
 
 router.get('/open',function (req,res){
