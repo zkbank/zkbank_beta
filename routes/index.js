@@ -27,8 +27,8 @@ router.post('/send', function (req,res) {
   const to = req.body.to
   const amount = parseFloat(req.body.amount)
     zcash.importZAddress(zkey)
-    if(zcash.exportZAddress(zaddr) != zkey && zcash.exportTAddress(zkey)!= zkey)
-      res.send('херня какая-то c парой адрес-значение')
+    if(zcash.exportZAddress(zaddr) != zkey && zcash.exportTAddress(zaddr)!= zkey)
+      res.send('херня какая-то c парой адрес-значение ')
     else if(!zcash.isValid(to))
       res.send('с получателем херня какая-то')
     else{
