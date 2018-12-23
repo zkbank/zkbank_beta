@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "forever start --uid \"mvp\" -ac /usr/bin/nodemon /proj/bin/www"
+    "start": "/nodemon /proj/bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
