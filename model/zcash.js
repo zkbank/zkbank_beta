@@ -29,11 +29,16 @@ function zcashApi(method, params) {
     }
 }
 module.exports = {
-    newAddress: ()   => zcashApi('z_getnewaddress').result.result,
-    exportKey: zaddr => zcashApi('z_exportkey',  [zaddr]).result.result,
-    importKey: zkey  => zcashApi('z_importkey',  [zkey]).result.result,
-    getBalance:zaddr => zcashApi('z_getbalance', [zaddr]).result.result,
-    isValie:  zaddr =>  zcashApi('z_validateaddress', [zaddr]).result.result.isvalid,
+    newZAddress: ()   => zcashApi('z_getnewaddress').result.result,
+    newTAddress: ()   => zcashApi('getnewaddress').result.result,
+    importTAddress:
+        dumpKey       => zcashApi('importprivkey',[dumpKey]).result.result,
+    exportTAddress:
+        address       => zcashApi('dumpprivkey',[address]).result.result,
+    exportZAddress: zaddr => zcashApi('z_exportkey',  [zaddr]).result.result,
+    importZAddress: zkey  => zcashApi('z_importkey',  [zkey]).result.result,
+    getBalance:zaddr => zcashApi(addr[0] == 'z'?'z_getbalance': 'getbalance', [zaddr]).result.result,
+    isValid: addr =>  zcashApi(addr[0] == 'z'?'z_validateaddress': 'validateaddress', [zaddr]).result.result.isvalid,
     listAddresses: () =>zcashApi('z_listaddresses').result.result,
     getOperationStatus: opid => zcashApi('z_getoperationstatus',[[opid]]).result.result[0],
     getOperationResult: opid => zcashApi('z_getoperationresult',[[opid]]).result.result[0],

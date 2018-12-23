@@ -7,28 +7,34 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/test', function (req,res) {
-  res.send('test123')
-})
 
-router.get('/newAddress', function(req, res) {
-  const zaddr = zcash.newAddress()
-  const zkey  = zcash.exportKey(zaddr)
+router.get('/newZAddress', function(req, res) {
+  const zaddr = zcash.newZAddress()
+  const zkey  = zcash.exportZAddress(zaddr)
   res.redirect(`/show/${zkey}/?address=${zaddr}`)
 })
+
+router.get('/newTAddress', function(req, res) {
+  const zaddr = zcash.newTAddress()
+  const zkey  = zcash.exportTAddress(zaddr)
+  res.redirect(`/show/${zkey}`)
+})
+
 
 router.post('/send', function (req,res) {
   const zaddr = req.body.zaddr
   const zkey = req.body.zkey
   const to = req.body.to
   const amount = parseFloat(req.body.amount)
-  zcash.importKey(zkey)
-  if(zcash.exportKey(zaddr) != zkey)
+  zcash.importZAddress(zkey)
+  if(zcash.exportZAddress(zaddr) != zkey)
     res.send('херня какая-то c парой адрес-значение')
-  if(!zcash.isValie(to))
+  else if(!zcash.isValid(to))
     res.send('с получателем херня какая-то')
-  let opid = zcash.send(zaddr,to,amount)
-  res.redirect(`/opid/${opid}`)
+  else{
+    let opid = zcash.send(zaddr,to,amount)
+    res.redirect(`/opid/${opid}`)
+  }
 })
 
 router.get('/open',function (req,res){
@@ -44,16 +50,28 @@ router.get('/opid/:opid', function (req,res) {
 
 router.get('/show/:privateKey',function (req,res) {
   let zkey = req.params.privateKey
-  let zaddr = req.query.address
-  zcash.importKey(zkey)
-  if(zcash.exportKey(zaddr) != zkey)
-    res.send('херня какая-то')
-  else
+  let taddr = zcash.importTAddress(zkey)
+  let addr = taddr || req.query.address
+  if(taddr){
     res.render('send',{
-      balance: zcash.getBalance(zaddr),
-      zaddr: zaddr,
+      balance: zcash.getBalance(addr),
+      zaddr: addr,
       zkey: zkey
     })
+  }
+  else{
+    zcash.importZAddress(zkey)
+    if( zcash.exportZAddress(zaddr) != zkey)
+      res.send('херня какая-то')
+    else
+      res.render('send',{
+        balance: zcash.getBalance(addr),
+        zaddr: addr,
+        zkey: zkey
+      })
+  }
+
+
 })
 
 module.exports = router;
