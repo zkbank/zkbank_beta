@@ -28,6 +28,7 @@ function zcashApi(method, params) {
         result: JSON.parse(xhr.responseText)
     }
 }
+
 module.exports = {
     newZAddress: ()   => zcashApi('z_getnewaddress').result.result,
     newTAddress: ()   => zcashApi('getnewaddress').result.result,
