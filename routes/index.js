@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/test', function (req,res) {
-  res.send('test3')
+  res.send('test')
 })
 
 router.get('/newAddress', function(req, res) {
