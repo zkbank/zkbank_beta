@@ -28,7 +28,7 @@ router.post('/send', function (req,res) {
 })
 
 router.get('/test', function(req,res) {
-  res.send('немазафака')
+  res.send('все таки мазафака')
 })
 
 router.get('/open',function (req,res){
