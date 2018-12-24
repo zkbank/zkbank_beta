@@ -46,5 +46,5 @@ module.exports = {
     send: (from,to,amount,minConfirm,fee) => zcashApi('z_sendmany',[from,[{
         address: to,
         amount: amount
-    }],minConfirm || 1, fee || 0.0001]).result.result
+    }], minConfirm || 2, fee || 0.00001 ]).result.result
 }
