@@ -2,12 +2,8 @@
 <html>
 	<head>
 		<title><%= title %></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/grid.min.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+		<%- include('commonscripts'); %>
 		<link rel="stylesheet" type="text/css" href="stylesheets/firstscreen.css" />
-		<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid welcome-screen">
@@ -54,14 +50,13 @@
 							</nav>
 							<ul class="form_tabs" data-tab-group="form_tabs">
 								<li data-tab="create">
-									<a class="button button_orange" href="/newwallet">Generate a wallet</a>
+									<a class="button button_orange" href="/newZAddress">Generate a wallet</a>
 								</li>
 								<li data-tab="useex">
                   <form action="/open">
   									<textarea id="public_address" name="zaddr" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  									<!--<label for="private_key">Private key</label>-->
   									<textarea id="private_key"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  									<button type="submit" class="button button_orange" href="/newwallet" value="Continue with this wallet" />
+  									<button type="submit" class="button button_orange">Continue with this wallet</button>
                   </form>
 								</li>
 							</ul>
@@ -78,7 +73,7 @@
 					  <h2>Sign in by private key</h2>
   					<textarea id="public_address_mob" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
   					<textarea id="private_key_mob" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  					<button type="submit" class="button button_orange" href="/newwallet" value="Continue with this wallet" />
+  					<button type="submit" class="button button_orange"">Continue with this wallet</button>
           </form>
 				</div>
 			</div>
