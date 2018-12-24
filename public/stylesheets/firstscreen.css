@@ -1,0 +1,273 @@
+.welcome-screen > .row
+{
+	min-height: 100vh;
+}
+.welcome-screen > .div
+{
+	min-height: 100%;
+}
+.welcome-screen_desc
+{
+	position: relative;
+	z-index: 1;
+	background: #1A1A1A;
+}
+.welcome-screen_desc .container,
+.welcome-screen_form .container
+{
+	height: 100%;
+}
+.welcome-screen_desc:before
+{
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	background-image: url('../img/safe.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center right;
+	opacity: 0.06;
+}
+.welcome-screen_form
+{
+	position: relative;
+	z-index: 1;
+	background-color: #303030;
+	background-image: linear-gradient(to top, #262626 0%, #303030 100%);
+}
+.welcome-screen_form:before
+{
+	position: absolute;
+	content: '';
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	-webkit-box-shadow: -2.5rem 0rem 4.8rem 0rem rgba(0,0,0,0.32);
+	-moz-box-shadow: -2.5rem 0rem 4.8rem 0rem rgba(0,0,0,0.32);
+	box-shadow: -2.5rem 0rem 4.8rem 0rem rgba(0,0,0,0.32);
+}
+.presentation
+{
+	display: flex;
+	height: 100%;
+	padding: 0 2rem;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+@media(min-width: 360px)
+{
+	.presentation
+	{
+		padding: 0 3rem;
+		justify-content: flex-start;
+		text-align: left;
+	}
+}
+@media(min-width: 768px)
+{
+	.presentation
+	{
+		padding: 0 16rem;
+	}
+}
+@media(min-width: 960px)
+{
+	.presentation
+	{
+		padding: 0 4rem;
+	}
+}
+@media(min-width: 1140px)
+{
+	.presentation
+	{
+		padding: 0 10rem;
+	}
+}
+.logo
+{
+	display: flex;
+	flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+.logo img
+{
+	width: 10rem;
+}
+@media(min-width: 360px)
+{
+	.logo
+	{
+		padding-bottom: 0;
+	}
+}
+
+@media(min-width: 960px)
+{
+	.logo
+	{
+		flex-grow: 0;
+		align-items: flex-start;
+		justify-content: flex-start;
+		padding-top: 7rem;
+	}
+	.logo img
+	{
+		width: 7rem;
+	}
+}
+.description
+{
+	display: flex;
+	flex-grow: 2;
+	flex-direction: column;
+	justify-content: center;
+}
+.description p
+{
+	margin-top: 0;
+	font-size: 2.5rem;
+	line-height: 5.5rem;
+	text-align: left;
+}
+@media(min-width: 960px)
+{
+	.description p
+	{
+		font-size: 2.5rem;
+		line-height: 5.5rem;
+		max-width: 92%;
+	}
+}
+.description hr
+{
+	display: block;
+	border: none;
+	margin: 2rem 0;
+	color: #FFF;
+	background-color: #FFF;
+	height: 1px;
+
+}
+@media(min-width:960px)
+{
+	.description hr
+	{
+		display: none;
+	}
+}
+.description ul
+{
+	list-style-type: none;
+	padding: 3rem 0 0 0;
+	text-align: left;
+}
+.description ul > li
+{
+	position: relative;
+	font-size: 2.5rem;
+	line-height: 5rem;
+	vertical-align: middle;
+	padding-left: 5rem;
+	line-height: 5.5rem;
+	margin-bottom: 1rem;
+}
+.description ul > li:before
+{
+	position: absolute;
+	content: '';
+	left: 0;
+	top: 50%;
+	width: 3rem;
+	height: 3rem;
+	transform: translateY(-50%);
+	background-image: url("../img/present-li.svg");
+	background-repeat: no-repeat;
+	background-size: 3rem 3rem;
+}
+.mobile_buttons
+{
+	flex-grow: 1;
+	flex-direction: column;
+}
+@media(min-width: 960px)
+{
+	.mobile_buttons
+	{
+		flex-grow: 1;
+		flex-direction: column;
+	}
+}
+.form
+{
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+@media(min-width: 768px)
+{
+	.form
+	{
+		padding: 0 16rem;
+	}
+}
+@media(min-width: 960px)
+{
+	.form
+	{
+		padding: 0 4rem;
+	}
+}
+@media(min-width: 1140px)
+{
+	.form
+	{
+		padding: 0 10rem;
+	}
+}
+.form_nav
+{
+	padding-bottom: 3rem;
+	display: block;
+	list-style-type: none;
+	text-align: center;
+}
+.form_nav a
+{
+	display: inline-block;
+	margin: 1.5rem 2rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px dashed #949494;
+	font-size: 2rem;
+	color: #949494;
+	cursor: pointer;
+}
+.form_nav a.selected
+{
+	color: #FF7C32;
+	border-bottom: 1px solid #FF7C32;
+	font-weight: 500;
+}
+.form_tabs
+{
+	list-style-type: none;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.form_tabs > li
+{
+	display: none;
+}

@@ -1,0 +1,162 @@
+html
+{
+	font-family: 'Montserrat';
+	font-weight: 300;
+	font-size: 4px;
+}
+@media(min-width: 360px)
+{
+	html
+	{
+		font-size: 5px;
+	}
+}
+@media(min-width: 768px)
+{
+	html
+	{
+		font-size: 7px;
+	}
+}
+@media(min-width: 1140px)
+{
+	html
+	{
+		font-size: 8px;
+	}
+}
+body
+{
+	position: relative;
+	font-size: 2rem;
+	color: #FFF;
+}
+
+a,
+a:hover,
+a:focus,
+a:visited
+{
+	text-decoration: none;
+}
+b, strong
+{
+	font-weight: 500;
+}
+h2
+{
+	display: block;
+	text-align: center;
+	font-size: 4rem;
+	font-weight: 300;
+	line-height: 6rem;
+}
+.overlay
+{
+	display: none;
+	position: absolute;
+	z-index: 87;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(to top, #262626 0%, #303030 100%);
+	opacity: 0.98;
+}
+.overlay_wrapper
+{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.overlay_x
+{
+	position: absolute;
+	content: '';
+	right: 0;
+	top: 0;
+	margin: 3rem 3rem 0 0;
+	width: 4rem;
+	height: 4rem;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNiAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48bGluZSB4MT0iMC4zNjczOTQiIHkxPSIxNS45MjUzIiB4Mj0iMTUuNjQ2MyIgeTI9IjAuNjQ2MzQiIHN0cm9rZT0id2hpdGUiLz48bGluZSB4MT0iMC4zNTMzMDkiIHkxPSIwLjY0NjkzNSIgeDI9IjE1LjYzMjIiIHkyPSIxNS45MjU4IiBzdHJva2U9IndoaXRlIi8+PC9zdmc+);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	cursor: pointer;
+}
+.overlay_container
+{
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0 6rem;
+}
+/*** BUTTONS ***/
+.button
+{
+	display: block;
+	width: 100%;
+	margin: 1.5rem 0;
+	padding: 3rem 0;
+	border-radius: 1rem;
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 500;
+}
+@media(min-width: 960px)
+{
+	.button
+	{
+		font-size: 2.25rem;
+	}	
+}
+.button_orange
+{
+	background: #FF7C32;
+	color: #FFFFFF;
+}
+.button_orange:hover
+{
+	background: #FF8832;
+}
+.button_underline
+{
+	border-radius: 0;
+	font-weight: 300;
+}
+.button_underline span
+{
+	padding: 1rem 0;
+	border-bottom: 1px dashed #FFFFFF;	
+}
+textarea
+{
+	width: 100%;
+	margin: 1.5rem 0;
+	padding: 2rem 3.5rem;
+	border: 1px solid #1C1C1C;
+	border-radius: 1rem;
+	background: #343434;
+	resize: none;
+	-webkit-box-shadow: inset 0rem 0rem 1rem 0rem rgba(34,34,34,1);
+	-moz-box-shadow: inset 0rem 0rem 1rem 0rem rgba(34,34,34,1);
+	box-shadow: inset 0rem 0rem 1rem 0rem rgba(34,34,34,1);
+	font-size: 2rem;
+	line-height: 4rem;
+	color: #949494;
+}
+textarea::placeholder {
+color: #626262
+}
+
+textarea:-moz-placeholder { 
+color: #626262 
+}
+
+textarea::-moz-placeholder {  
+color: #626262;  
+}
+
+textarea:-ms-input-placeholder {
+color: #626262 
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Home Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/grid.min.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/firstscreen.css" />
+		<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid welcome-screen">
+			<div class="row">
+				<div class="col welcome-screen_desc">
+					<div class="container">
+						<section class="presentation">
+							<div class="logo">
+								<img src="img/zkbank.svg" />
+							</div>
+							<div class="description">
+								<div>
+									<p>
+										Zero-Knowlegde Bank is the first
+										application <nobr>for making</nobr> simple
+										<strong><nobr>anonymous transactions</nobr>
+										with ZEC cryptocurrency</strong> without downloading
+										<nobr>a full Zcash node (40+GB)</nobr>
+									</p>
+
+									<ul>
+										<li>Forever <strong>free</strong></li>
+										<li><strong>Privacy</strong> by design</li>
+										<li><strong>No KYC</strong></li>
+									</ul>
+								</div>
+							</div>
+							<div class="mobile_buttons d-flex d-lg-none">
+								<div>
+									<a class="button button_orange d-block d-lg-none" href="/newwallet">Generate Z-wallet</a>
+									<a class="button button_underline d-block d-lg-none" data-modal-open="1"><span>Use existing private key</span></a>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+				<div class="col welcome-screen_form d-none d-lg-block">
+					<div class="container">
+						<section class="form">
+							<h2>Sign in to your wallet</h2>
+							<nav class="form_nav" >
+								<a class="selected" data-tab-open-group="form_tabs" data-tab-open="create">Create a new wallet</a>
+								<a data-tab-open-group="form_tabs" data-tab-open="useex">Use a private key</a>
+							</nav>
+							<ul class="form_tabs" data-tab-group="form_tabs">
+								<li data-tab="create">
+									<a class="button button_orange" href="/newwallet">Generate a wallet</a>
+								</li>
+								<li data-tab="useex">
+									<textarea id="public_address" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+									<!--<label for="private_key">Private key</label>-->
+									<textarea id="private_key" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+									<a class="button button_orange" href="/newwallet">Continue with this wallet</a>
+									<a href="tg://resolve?domain=angrygeek">test</a>
+								</li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="overlay">
+			<div class="overlay_wrapper">
+				<div class="overlay_x" data-modal-close="1"></div>
+				<div class="container overlay_container">
+					<h2>Sign in by private key</h2>
+					<textarea id="public_address_mob" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+					<textarea id="private_key_mob" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+					<a class="button button_orange" href="/newwallet">Continue with this wallet</a>
+				</div>
+			</div>
+		</div>
+	<script type="text/javascript" src="scripts/main.js"></script>
+	</body>
+</html>
