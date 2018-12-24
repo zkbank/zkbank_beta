@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home Page</title>
+		<title><%= title %></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="stylesheets/grid.min.css" />
@@ -57,11 +57,12 @@
 									<a class="button button_orange" href="/newwallet">Generate a wallet</a>
 								</li>
 								<li data-tab="useex">
-									<textarea id="public_address" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-									<!--<label for="private_key">Private key</label>-->
-									<textarea id="private_key" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-									<a class="button button_orange" href="/newwallet">Continue with this wallet</a>
-									<a href="tg://resolve?domain=angrygeek">test</a>
+                  <form action="/open">
+  									<textarea id="public_address" name="zaddr" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  									<!--<label for="private_key">Private key</label>-->
+  									<textarea id="private_key"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  									<button type="submit" class="button button_orange" href="/newwallet" value="Continue with this wallet" />
+                  </form>
 								</li>
 							</ul>
 						</section>
@@ -73,10 +74,12 @@
 			<div class="overlay_wrapper">
 				<div class="overlay_x" data-modal-close="1"></div>
 				<div class="container overlay_container">
-					<h2>Sign in by private key</h2>
-					<textarea id="public_address_mob" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-					<textarea id="private_key_mob" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-					<a class="button button_orange" href="/newwallet">Continue with this wallet</a>
+          <form action="/open">
+					  <h2>Sign in by private key</h2>
+  					<textarea id="public_address_mob" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  					<textarea id="private_key_mob" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  					<button type="submit" class="button button_orange" href="/newwallet" value="Continue with this wallet" />
+          </form>
 				</div>
 			</div>
 		</div>
