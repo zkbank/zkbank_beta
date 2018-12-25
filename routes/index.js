@@ -6,7 +6,7 @@ const fs = require('fs');
 
 
 router.get('/', function(req, res, next) {
-  var IndexPage = fs.readFileSync('../views/index.ejs', 'utf-8');
+  var IndexPage = fs.readFileSync(__dirname + 'views/index.ejs', 'utf-8');
   res.render(IndexPage);
   //res.end(ejs.render(IndexPage));
 //  ejs.render('index', { title: 'Zero-Knowledge Bank' });
