@@ -2,15 +2,24 @@ html
 {
 	font-family: 'Montserrat';
 	font-weight: 300;
-	font-size: 4px;
+	font-size: 5px;
 }
-@media(min-width: 360px)
+
+@media all and (min-width: 375px) and (-webkit-device-pixel-ratio: 3)
 {
 	html
 	{
-		font-size: 5px;
+		font-size: 6px;
 	}
 }
+@media all and (min-width: 414px)
+{
+	html
+	{
+		font-size: 6px;
+	}
+}
+
 @media(min-width: 768px)
 {
 	html
