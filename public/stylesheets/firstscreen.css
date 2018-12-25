@@ -70,6 +70,13 @@
 		text-align: left;
 	}
 }
+@media(min-width: 414px)
+{
+	.presentation
+	{
+		padding: 0 1rem;
+	}
+}
 @media(min-width: 768px)
 {
 	.presentation
