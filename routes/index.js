@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const zcash = require('../model/zcash')
+
+// Should be removed when PAVLIK does his thing
+const path = require('path');
 const ejs = require('ejs');
 const fs = require('fs');
 
