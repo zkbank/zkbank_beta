@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const zcash = require('../model/zcash')
+const ejs = require('ejs');
 
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Zero-Knowledge Bank' });
+  ejs.render('index', { title: 'Zero-Knowledge Bank' });
 });
 
 
