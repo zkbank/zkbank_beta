@@ -3,7 +3,7 @@ const router = express.Router();
 const zcash = require('../model/zcash')
 const ejs = require('ejs');
 var fs = require('fs');
-var IndexPage = fs.readFileSync('./views/index.ejs', 'utf-8');
+var IndexPage = fs.readFileSync('/views/index.ejs', 'utf-8');
 
 
 router.get('/', function(req, res, next) {
