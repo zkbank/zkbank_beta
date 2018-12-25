@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const zcash = require('../model/zcash')
 const ejs = require('ejs');
-var fs = require('fs');
-var IndexPage = fs.readFileSync(__dirname + '../views/index.ejs', 'utf-8');
+const fs = require('fs');
 
 
 router.get('/', function(req, res, next) {
-  res.end(ejs.render(IndexPage));
+  var IndexPage = fs.readFileSync('/views/index.ejs', 'utf-8');
+  res.render(IndexPage);
+  //res.end(ejs.render(IndexPage));
 //  ejs.render('index', { title: 'Zero-Knowledge Bank' });
 });
 
