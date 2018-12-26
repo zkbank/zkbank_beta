@@ -69,7 +69,7 @@ router.get('/show/:privateKey',function (req,res) {
     zcash.importZAddress(zkey)
     if( zcash.exportZAddress(addr) != zkey)
       res.send('херня какая-то')
-    else
+    else{
       var WalletPage = fs.readFileSync(path.join(__dirname, '..', 'views/wallet.ejs'), 'utf-8')
       res.end(ejs.render(WalletPage, {
          title: 'Wallet — Zero-Knowledge Bank',
