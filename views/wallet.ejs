@@ -2,12 +2,12 @@
 	<head>
 		<title>Home Page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/grid.min.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/wallet.css" />
-		<script type="text/javascript" src="scripts/jquery.min.js"></script>
-		<script type="text/javascript" src="scripts/qrcode.js"></script>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/grid.min.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/wallet.css" />
+		<script type="text/javascript" src="/scripts/jquery.min.js"></script>
+		<script type="text/javascript" src="/scripts/qrcode.js"></script>
 	</head>
 	<body>
 			<header>
@@ -19,7 +19,7 @@
 						<div class="col d-none d-md-block">
 							<div class="balance-desktop">
 								Balance<br />
-								<span class="balance-desktop_amount">0.000001 ZEC</span>
+								<span class="balance-desktop_amount"><%= balance %></span>
 							</div>
 						</div>
 					</div>
@@ -82,15 +82,15 @@
   									<ul class="form_container">
   										<li>
   											<label for="amount">Amount of ZEC</label>
-  											<input type="text" id="amount" placeholder="Max. 0.001" autocorrect="off" spellcheck="false" autocomplete="off" />
+  											<input type="text" id="amount" name="amount" placeholder="Max. <%= balance %>" autocorrect="off" spellcheck="false" autocomplete="off" />
   										</li>
   										<li>
   											<label for="recepient">Recepient address</label>
-  											<textarea id="recepient" placeholder="Public address" rows="2"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  											<textarea id="recepient" name="to" placeholder="Public address" rows="2"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
   										</li>
   										<li>
                         <input type="hidden" name="zaddr" value="<%= zaddr %>" />
-                        <input type="hidden" name="zaddr" value="<%= zkey %>" />
+                        <input type="hidden" name="zkey" value="<%= zkey %>" />
   											<button type="submit" class="button button_orange">Send transaction</button>
   										</li>
   									</ul>
