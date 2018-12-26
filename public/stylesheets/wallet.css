@@ -13,7 +13,7 @@ body:before
 	width: 100%;
 	height: 100%;
 	z-index: -1;
-	background-image: url('../images/subtle-dots.png');
+	background-image: url('/images/subtle-dots.png');
 	background-repeat: repeat;
 	opacity: 0.32;
 }
