@@ -34,9 +34,9 @@ router.post('/send', function (req,res) {
   const amount = parseFloat(req.body.amount)
     zcash.importZAddress(zkey)
     if(zcash.exportZAddress(zaddr) != zkey && zcash.exportTAddress(zaddr)!= zkey)
-      res.send('херня какая-то c парой адрес-значение ')
+      res.send('Incorrect wallet/key pair')
     else if(!zcash.isValid(to))
-      res.send('с получателем херня какая-то')
+      res.send('Incorrect recepient')
     else{
       let opid = zcash.send(zaddr,to,amount)
       res.redirect(`/opid/${opid}`)
