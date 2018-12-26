@@ -68,7 +68,7 @@ router.get('/show/:privateKey',function (req,res) {
   else{
     zcash.importZAddress(zkey)
     if( zcash.exportZAddress(addr) != zkey)
-      res.send('херня какая-то')
+      res.send('Incorrect wallet')
     else
       var WalletPage = fs.readFileSync(path.join(__dirname, '..', 'views/wallet.ejs'), 'utf-8')
       res.end(ejs.render(WalletPage, {
