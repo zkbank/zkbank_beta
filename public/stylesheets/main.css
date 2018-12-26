@@ -194,7 +194,7 @@ textarea:focus
 	top: 50%;
 	transform: translateY(-50%);
 	background-color: transparent;
-	background-image: url('../images/copy.svg');
+	background-image: url('/img/copy.svg');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 3rem;
