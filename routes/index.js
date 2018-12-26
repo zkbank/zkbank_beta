@@ -10,9 +10,7 @@ const fs = require('fs');
 
 router.get('/', function(req, res, next) {
   var IndexPage = fs.readFileSync(path.join(__dirname, '..', 'views/index.ejs'), 'utf-8');
-  //res.render(IndexPage);
   res.end(ejs.render(IndexPage, { title: 'Zero-Knowledge Bank' }));
-//  ejs.render('index', { title: 'Zero-Knowledge Bank' });
 });
 
 
@@ -72,10 +70,17 @@ router.get('/show/:privateKey',function (req,res) {
     if( zcash.exportZAddress(addr) != zkey)
       res.send('херня какая-то')
     else
-      res.render('send',{
+      var WalletPage = fs.readFileSync(path.join(__dirname, '..', 'views/wallet.ejs'), 'utf-8')
+      res.end(ejs.render(WalletPage, {
+         title: 'Wallet — Zero-Knowledge Bank',
+         balance: zcash.getBalance(addr),
+         zaddr: addr,
+         zkey: zkey
+      }))
+      /* res.render('send',{
         balance: zcash.getBalance(addr),
         zaddr: addr,
-        zkey: zkey
+        zkey: zkey */
       })
   }
 
