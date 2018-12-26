@@ -58,19 +58,21 @@ router.get('/show/:privateKey',function (req,res) {
   let zkey = req.params.privateKey
   let taddr = zcash.importTAddress(zkey)
   let addr = taddr || req.query.address
+    let WalletPage = fs.readFileSync(path.join(__dirname, '..', 'views/wallet.ejs'), 'utf-8')
+
   if(taddr){
-    res.render('send',{
-      balance: zcash.getBalance(addr),
-      zaddr: addr,
-      zkey: zkey
-    })
+    res.end(ejs.render(WalletPage, {
+       title: 'Wallet — Zero-Knowledge Bank',
+       balance: zcash.getBalance(addr),
+       zaddr: addr,
+       zkey: zkey
+    }))
   }
   else{
     zcash.importZAddress(zkey)
     if( zcash.exportZAddress(addr) != zkey)
       res.send('Incorrect wallet')
     else
-      var WalletPage = fs.readFileSync(path.join(__dirname, '..', 'views/wallet.ejs'), 'utf-8')
       res.end(ejs.render(WalletPage, {
          title: 'Wallet — Zero-Knowledge Bank',
          balance: zcash.getBalance(addr),
