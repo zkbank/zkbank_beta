@@ -167,17 +167,17 @@
 								<% if(status == 'executing') { %>
 
                   <img src="/img/pending.svg" class="txstatus_statusimg">
-                  <div class="txstatus_warning">
-										<p>
-											Please don’t close this page until<br />
-											transaction is completed!
-										</p>
-									</div>
                   <h1>Transaction: <span class="selection_pending">Pending</span></h1>
                   <p>
 										TX status will be automatically<br />
 										updated in <strong><span id="timer">10</span> seconds</strong>
 									</p>
+                  <div class="txstatus_warning">
+                    <p>
+                      Please don’t close this page until<br />
+                      transaction is completed!
+                    </p>
+                  </div>
 
                 <% } else if(status == 'success') { %>
 
@@ -226,7 +226,7 @@
     			}
     		}
 
-    		// var counter = setInterval(counter, 1000);
+    		var counter = setInterval(counter, 1000);
     	</script>
   <% } %>
 	</body>
