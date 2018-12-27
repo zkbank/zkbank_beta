@@ -59,7 +59,7 @@
 							</div>
 							<div class="mobile_buttons d-flex d-lg-none">
 								<div>
-									<a class="button button_orange d-block d-lg-none" href="/newZAddress">Generate Z-wallet</a>
+									<a class="button button_orange d-block d-lg-none" href="/newZAddress">Generate a private Z-wallet</a>
                   <a class="button button_green d-block d-lg-none" href="/newZAddress">Generate T-wallet</a>
 									<a class="button button_underline d-block d-lg-none" data-modal-open="1"><span>Use existing private key</span></a>
 								</div>
@@ -70,7 +70,7 @@
 				<div class="col welcome-screen_form d-none d-lg-block">
 					<div class="container">
 						<section class="form">
-							<h2>Sign in to your ZCash wallet</h2>
+							<h2>Log in to your Zcash wallet</h2>
 							<nav class="form_nav" >
 								<a class="selected" data-tab-open-group="form_tabs" data-tab-open="create">Create a new wallet</a>
 								<a data-tab-open-group="form_tabs" data-tab-open="zwall">Log in (Z-address)</a>
@@ -78,7 +78,8 @@
 							</nav>
 							<ul class="form_tabs" data-tab-group="form_tabs">
 								<li data-tab="create">
-									<a class="button button_orange" href="/newZAddress">Generate a wallet</a>
+									<a class="button button_orange" href="/newZAddress">Generate a private Z-wallet</a>
+                  <a class="button button_green d-block d-lg-none" href="/newZAddress">Generate T-wallet</a>
 								</li>
 								<li data-tab="zwall">
                   <form action="/open">
@@ -105,9 +106,20 @@
 				<div class="container overlay_container">
           <form action="/open">
 					  <h2>Sign in with your private key</h2>
-  					<textarea id="public_address_mob" name="zaddr" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  					<textarea id="private_key_mob"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  					<button type="submit" class="button button_orange"">Continue with this wallet</button>
+            <nav class="form_nav" >
+              <a class="selected" data-tab-open-group="mob_form_tabs" data-tab-open="zwall">Z-Wallet</a>
+              <a data-tab-open-group="mob_form_tabs" data-tab-open="twall">T-Wallet</a>
+            </nav>
+            <ul class="form_tabs" data-tab-group="mob_form_tabs">
+              <li data-tab="zwall">
+                <textarea id="public_address_mob" name="zaddr" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+      					<textarea id="private_key_mob"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+              </li>
+              <li data-tab="twall">
+                	<textarea id="private_key_mob"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+              </li>
+            </ul>
+    				<button type="submit" class="button button_orange"">Continue with this wallet</button>
           </form>
 				</div>
 			</div>
