@@ -51,7 +51,9 @@ router.get('/open',function (req,res){
 
 router.get('/opid/:opid', function (req,res) {
   const opid = req.params.opid
-  res.render('opid',zcash.getOperationStatus(opid))
+    let OpidPage = fs.readFileSync(path.join(__dirname, '..', 'views/opid.ejs'), 'utf-8')
+    res.end(ejs.render(OpidPage, zcash.getOperationStatus(opid)))
+  /*res.render('opid',zcash.getOperationStatus(opid))*/
 })
 
 router.get('/show/:privateKey',function (req,res) {

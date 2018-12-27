@@ -63,6 +63,16 @@ h2
 	font-weight: 300;
 	line-height: 6rem;
 }
+p
+{
+	line-height: 3.75rem;
+}
+p a
+{
+	color: #FF7C32;
+	padding-bottom: 4px;
+	border-bottom: 1px dashed #FF7C32;
+}
 .overlay
 {
 	display: none;
@@ -133,6 +143,15 @@ h2
 .button_orange:hover
 {
 	background: #FF8832;
+}
+.button_green
+{
+	background: #146B60;
+	color: #FFFFFF;
+}
+.button_green:hover
+{
+	background: #197569;
 }
 .button_underline
 {
