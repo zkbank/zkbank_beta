@@ -144,6 +144,15 @@ p a
 {
 	background: #FF8832;
 }
+.button_darkorange
+{
+	background: #BA5B25;
+	color: #FFFFFF;
+}
+.button_darkorange:hover
+{
+	background: #FF8832;
+}
 .button_green
 {
 	background: #146B60;
