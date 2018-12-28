@@ -23,8 +23,8 @@ $('*[data-modal-close]').click(function(){
 function tab_show(id, group)
 {
   console.log(id + ' / ' + group);
-  $('a[data-tab-group=' + group + '][data-tab-open=' + id + ']').parent().find('a').removeClass('selected');
-  $('a[data-tab-group=' + group + '][data-tab-open=' + id + ']').addClass('selected');
+  $('a[data-tab-open-group=' + group + '][data-tab-open=' + id + ']').parent().find('a').removeClass('selected');
+  $('a[data-tab-open-group=' + group + '][data-tab-open=' + id + ']').addClass('selected');
   $('ul[data-tab-group=' + group + '] > li').hide();
   $('ul[data-tab-group=' + group + '] > li[data-tab=' + id + ']').show();
 }
