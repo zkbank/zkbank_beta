@@ -1,18 +1,5 @@
 <%- include('partials/header', {title:'Transaction — Zero-Knowledge Bank', styles:['wallet', 'status'], scripts:[] }) %>
-			<header>
-				<div class="container">
-					<div class="row flex-row align-items-center">
-						<div class="col">
-							<img src="/img/logo-white.svg" class="logo">
-						</div>
-						<div class="col d-none d-md-block">
-							<div class="txstatus_help">
-								<p>Any problems?<br /> Ask for help on <a href="tg://resolve?domain=zkbank">Telegram (@zkbank)</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
+  <%- include('partials/status-header') %>
 			<main>
 				<div class="container tx_container">
 					<div class="info_block info_block_headed">
@@ -61,28 +48,26 @@
 					</div>
 				</div>
 			</main>
-			<footer class="d-block d-md-none">
-				<p>Any problems?<br /> Ask for help on <a href="tg://resolve?domain=zkbank">Telegram (@zkbank)</a></p>
-			</footer>
-  <% if(status == 'executing') { %>
-    	<script type="text/javascript">
+	    <%- include('partials/status-footer') %>
+          <% if(status == 'executing') { %>
+            	<script type="text/javascript">
 
-    		var seconds = 10;
-    		var timer = $('#timer');
+            		var seconds = 10;
+            		var timer = $('#timer');
 
-    		function counter()
-    		{
-    			seconds -= 1;
-    			timer.html(seconds);
+            		function counter()
+            		{
+            			seconds -= 1;
+            			timer.html(seconds);
 
-    			if(seconds == 0)
-    			{
-    				clearInterval(counter);
-    				location.reload();
-    			}
-    		}
+            			if(seconds == 0)
+            			{
+            				clearInterval(counter);
+            				location.reload();
+            			}
+            		}
 
-    		var counter = setInterval(counter, 1000);
-    	</script>
-  <% } %>
+            		var counter = setInterval(counter, 1000);
+            	</script>
+          <% } %>
 <%- include('partials/footer', {scripts: []}) %>
