@@ -13,6 +13,10 @@ router.get('/', function(req, res, next) {
   res.end(ejs.render(IndexPage, { title: 'Zero-Knowledge Bank' }));
 });
 
+router.get('/testPT', function(req, res, next) {
+  let TestPage = fs.readFileSync(path.join(__dirname, '..', 'views/test.ejs'), 'utf-8');
+  res.end(ejs.render(TestPage, { title: 'Zero-Knowledge Bank' }));
+});
 
 router.get('/newZAddress', function(req, res) {
   const zaddr = zcash.newZAddress()
