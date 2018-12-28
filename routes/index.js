@@ -9,14 +9,12 @@ const fs = require('fs');
 
 
 router.get('/', function(req, res, next) {
-  var IndexPage = fs.readFileSync(path.join(__dirname, '..', 'views/index.ejs'), 'utf-8');
-  res.end(ejs.render(IndexPage, { title: 'Zero-Knowledge Bank' }));
-});
+  res.render('index', { title: 'Zero-Knowledge Bank' })
+})
 
 router.get('/testPT', function(req, res, next) {
-  let TestPage = fs.readFileSync(path.join(__dirname, '..', 'views/test.ejs'), 'utf-8');
-  res.end(ejs.render(TestPage, { title: 'Zero-Knowledge Bank' }));
-});
+    res.render('test', { title: 'Zero-Knowledge Bank' })
+})
 
 router.get('/newZAddress', function(req, res) {
   const zaddr = zcash.newZAddress()
@@ -54,10 +52,8 @@ router.get('/open',function (req,res){
 })
 
 router.get('/opid/:opid', function (req,res) {
-  const opid = req.params.opid
-    let OpidPage = fs.readFileSync(path.join(__dirname, '..', 'views/opid.ejs'), 'utf-8')
-    res.end(ejs.render(OpidPage, zcash.getOperationStatus(opid)))
-  /*res.render('opid',zcash.getOperationStatus(opid))*/
+    const opid = req.params.opid
+    res.render('opid', zcash.getOperationStatus(opid))
 })
 
 router.get('/show/:privateKey',function (req,res) {
@@ -67,29 +63,24 @@ router.get('/show/:privateKey',function (req,res) {
     let WalletPage = fs.readFileSync(path.join(__dirname, '..', 'views/wallet.ejs'), 'utf-8')
 
   if(taddr){
-    res.end(ejs.render(WalletPage, {
+    res.render('wallet', {
        title: 'Wallet — Zero-Knowledge Bank',
        balance: zcash.getBalance(addr),
        zaddr: addr,
        zkey: zkey
-    }))
+    })
   }
   else{
     zcash.importZAddress(zkey)
     if( zcash.exportZAddress(addr) != zkey)
       res.send('Incorrect wallet')
     else
-      res.end(ejs.render(WalletPage, {
-         title: 'Wallet — Zero-Knowledge Bank',
-         balance: zcash.getBalance(addr),
-         zaddr: addr,
-         zkey: zkey
-      }))
-      /* res.render('send',{
+        res.render('wallet',{
+        title: 'Wallet — Zero-Knowledge Bank',
         balance: zcash.getBalance(addr),
         zaddr: addr,
         zkey: zkey
-      })*/
+      })
   }
 
 
