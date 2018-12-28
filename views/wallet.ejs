@@ -1,17 +1,4 @@
-<html>
-	<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title><%= title %></title>
-		<link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/grid.min.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/fonts.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/wallet.css" />
-		<script type="text/javascript" src="/scripts/jquery.min.js"></script>
-		<script type="text/javascript" src="/scripts/qrcode.js"></script>
-	</head>
-	<body>
+<%- include('partials/header', {title:'Wallet — Zero-Knowledge Bank', styles:['wallet'], scripts:['qrcode'] }) %>
 			<header>
 				<div class="container">
 					<div class="row flex-row align-items-center">
@@ -129,5 +116,4 @@
 						height: 240
 				   });
 	</script>
-	</body>
-</html>
+<%- include('partials/footer', {scripts: []}) %>
