@@ -20,16 +20,15 @@ $('*[data-modal-close]').click(function(){
 
 // Tabs
 
-function tab_show(id, group)
+function tab_show(obj, id, group)
 {
-  console.log(id + ' / ' + group);
-  $('a[data-tab-open-group=' + group + '][data-tab-open=' + id + ']').parent().find('a').removeClass('selected');
-  $('a[data-tab-open-group=' + group + '][data-tab-open=' + id + ']').addClass('selected');
+  obj.parent().find('a').removeClass('selected');
+  obj.addClass('selected');
   $('ul[data-tab-group=' + group + '] > li').hide();
   $('ul[data-tab-group=' + group + '] > li[data-tab=' + id + ']').show();
 }
 
 $('ul[data-tab-group] > li:first-child').show();
 $('a[data-tab-open-group][data-tab-open]').click(function(){
-  tab_show($(this).attr('data-tab-open'), $(this).attr('data-tab-open-group'));
+  tab_show($(this), $(this).attr('data-tab-open'), $(this).attr('data-tab-open-group'));
 });
