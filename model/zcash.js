@@ -5,7 +5,7 @@ function zcashApi(method, params) {
     const user = process.env.RPCUSER
                 .split(":")
                 .reduce((o,v,i) => {
-                    o[i==0?'name':'password'] = i
+                    o[i==0?'name':'password'] = v
                     return o
                 },{})
     console.log(node, user)
