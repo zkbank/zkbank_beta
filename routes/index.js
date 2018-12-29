@@ -9,12 +9,12 @@ const fs = require('fs');
 
 
 router.get('/', function(req, res, next) {
-  var IndexPage = fs.readFileSync(path.join(__dirname, '..', 'views/index.ejs'), 'utf-8');
-  //res.render(IndexPage);
-  res.end(ejs.render(IndexPage, { title: 'Zero-Knowledge Bank' }));
-//  ejs.render('index', { title: 'Zero-Knowledge Bank' });
-});
+  res.render('index', { title: 'Zero-Knowledge Bank' })
+})
 
+router.get('/testPT', function(req, res, next) {
+    res.render('test', { title: 'Zero-Knowledge Bank' })
+})
 
 router.get('/newZAddress', function(req, res) {
   const zaddr = zcash.newZAddress()
@@ -36,9 +36,9 @@ router.post('/send', function (req,res) {
   const amount = parseFloat(req.body.amount)
     zcash.importZAddress(zkey)
     if(zcash.exportZAddress(zaddr) != zkey && zcash.exportTAddress(zaddr)!= zkey)
-      res.send('херня какая-то c парой адрес-значение ')
+      res.send('Incorrect wallet/key pair')
     else if(!zcash.isValid(to))
-      res.send('с получателем херня какая-то')
+      res.send('Incorrect recepient')
     else{
       let opid = zcash.send(zaddr,to,amount)
       res.redirect(`/opid/${opid}`)
@@ -52,27 +52,31 @@ router.get('/open',function (req,res){
 })
 
 router.get('/opid/:opid', function (req,res) {
-  const opid = req.params.opid
-  res.render('opid',zcash.getOperationStatus(opid))
+    const opid = req.params.opid
+    res.render('opid', zcash.getOperationStatus(opid))
 })
 
 router.get('/show/:privateKey',function (req,res) {
   let zkey = req.params.privateKey
   let taddr = zcash.importTAddress(zkey)
   let addr = taddr || req.query.address
+    let WalletPage = fs.readFileSync(path.join(__dirname, '..', 'views/wallet.ejs'), 'utf-8')
+
   if(taddr){
-    res.render('send',{
-      balance: zcash.getBalance(addr),
-      zaddr: addr,
-      zkey: zkey
+    res.render('wallet', {
+       title: 'Wallet — Zero-Knowledge Bank',
+       balance: zcash.getBalance(addr),
+       zaddr: addr,
+       zkey: zkey
     })
   }
   else{
     zcash.importZAddress(zkey)
     if( zcash.exportZAddress(addr) != zkey)
-      res.send('херня какая-то')
+      res.send('Incorrect wallet')
     else
-      res.render('send',{
+        res.render('wallet',{
+        title: 'Wallet — Zero-Knowledge Bank',
         balance: zcash.getBalance(addr),
         zaddr: addr,
         zkey: zkey

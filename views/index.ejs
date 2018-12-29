@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title><%= title %></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script type="text/javascript" src="scripts/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/grid.min.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/fonts.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/firstscreen.css" />
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131331767-1"></script>
-		<script type="text/javascript" >
-			(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-				m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-			(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-			ym(51707000, "init", {
-				id:51707000,
-				clickmap:true,
-				trackLinks:true,
-				accurateTrackBounce:true,
-				webvisor:true
-			});
-
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-131331767-1');
-		</script>
-	</head>
-	<body>
+<%- include('partials/header', {title:'Zero-Knowledge Bank', styles:['firstscreen'], scripts:[] }) %>
 		<div class="container-fluid welcome-screen">
 			<div class="row">
 				<div class="col welcome-screen_desc">
@@ -46,19 +14,20 @@
 										application <nobr>for making</nobr> simple
 										<strong><nobr>anonymous transactions</nobr>
 										with ZEC cryptocurrency</strong> without downloading
-										<nobr>a full Zcash node (40+GB)</nobr>
+										<nobr>a full Zcash node (20+GB)</nobr>
 									</p>
 
 									<ul>
+                    <li><strong>Privacy</strong> by design</li>
 										<li>Forever <strong>free</strong></li>
-										<li><strong>Privacy</strong> by design</li>
 										<li><strong>No KYC</strong></li>
 									</ul>
 								</div>
 							</div>
 							<div class="mobile_buttons d-flex d-lg-none">
 								<div>
-									<a class="button button_orange d-block d-lg-none" href="/newwallet">Generate Z-wallet</a>
+									<a class="button button_orange d-block d-lg-none" href="/newZAddress">Generate a private Z-wallet</a>
+                  <a class="button button_darkorange d-block d-lg-none" href="/newTAddress">Generate a T-wallet</a>
 									<a class="button button_underline d-block d-lg-none" data-modal-open="1"><span>Use existing private key</span></a>
 								</div>
 							</div>
@@ -68,20 +37,28 @@
 				<div class="col welcome-screen_form d-none d-lg-block">
 					<div class="container">
 						<section class="form">
-							<h2>Sign in to your wallet</h2>
+							<h2>Log in to your Zcash wallet</h2>
 							<nav class="form_nav" >
 								<a class="selected" data-tab-open-group="form_tabs" data-tab-open="create">Create a new wallet</a>
-								<a data-tab-open-group="form_tabs" data-tab-open="useex">Use a private key</a>
+								<a data-tab-open-group="form_tabs" data-tab-open="zwall">Log in (Z-address)</a>
+                <a data-tab-open-group="form_tabs" data-tab-open="twall">Log in (T-address)</a>
 							</nav>
 							<ul class="form_tabs" data-tab-group="form_tabs">
 								<li data-tab="create">
-									<a class="button button_orange" href="/newZAddress">Generate a wallet</a>
+									<a class="button button_orange" href="/newZAddress">Generate a private Z-wallet</a>
+                  <a class="button button_darkorange" href="/newTAddress">Generate a T-wallet</a>
 								</li>
-								<li data-tab="useex">
+								<li data-tab="zwall">
                   <form action="/open">
   									<textarea id="public_address" name="zaddr" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
   									<textarea id="private_key"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  									<button type="submit" class="button button_orange">Continue with this wallet</button>
+  									<button type="submit" class="button button_orange">Log in to your Z-wallet</button>
+                  </form>
+								</li>
+                <li data-tab="twall">
+                  <form action="/open">
+  									<textarea id="private_key"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  									<button type="submit" class="button button_orange">Log in to your T-wallet</button>
                   </form>
 								</li>
 							</ul>
@@ -95,14 +72,23 @@
 				<div class="overlay_x" data-modal-close="1"></div>
 				<div class="container overlay_container">
           <form action="/open">
-					  <h2>Sign in by private key</h2>
-  					<textarea id="public_address_mob" name="zaddr" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  					<textarea id="private_key_mob"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-  					<button type="submit" class="button button_orange"">Continue with this wallet</button>
+					  <h2>Sign in with <nobr>your private key</nobr></h2>
+            <nav class="form_nav">
+              <a class="selected" data-tab-open-group="mob_form_tabs" data-tab-open="mob_zwall">Z-Wallet</a>
+              <a data-tab-open-group="mob_form_tabs" data-tab-open="mob_twall">T-Wallet</a>
+            </nav>
+            <ul class="form_tabs" data-tab-group="mob_form_tabs">
+              <li data-tab="mob_zwall">
+                <textarea id="public_address_mob" name="zaddr" class="textarea_privkey" placeholder="Public Address (starting with &quot;z&quot;)" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+      					<textarea id="private_key_mob"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+              </li>
+              <li data-tab="mob_twall">
+                	<textarea id="private_key_mob"  name="zkey" class="textarea_privkey" placeholder="Private key" rows="3" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+              </li>
+            </ul>
+    				<button type="submit" class="button button_orange"">Continue with this wallet</button>
           </form>
 				</div>
 			</div>
 		</div>
-	<script type="text/javascript" src="scripts/main.js"></script>
-	</body>
-</html>
+<%- include('partials/footer', {scripts: ['main']}) %>

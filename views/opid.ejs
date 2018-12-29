@@ -1,0 +1,73 @@
+<%- include('partials/header', {title:'Transaction — Zero-Knowledge Bank', styles:['wallet', 'status'], scripts:[] }) %>
+  <%- include('partials/status-header') %>
+			<main>
+				<div class="container tx_container">
+					<div class="info_block info_block_headed">
+								<div class="info_head">
+									TX status
+								</div>
+								<div class="info_container txstatus_container">
+								<% if(status == 'executing') { %>
+
+                  <img src="/img/pending.svg" class="txstatus_statusimg">
+                  <h1>Transaction: <span class="selection_pending">Pending</span></h1>
+                  <p>
+										TX status will be automatically<br />
+										updated in <strong><span id="timer">10</span> seconds</strong>
+									</p>
+                  <div class="txstatus_warning">
+                    <p>
+                      Please don’t close this page until<br />
+                      transaction is completed!
+                    </p>
+                  </div>
+
+                <% } else if(status == 'success') { %>
+
+                    <img src="/img/success.svg" class="txstatus_statusimg">
+                    <h1>Transaction: <span class="selection_success">Success</span></h1>
+                    <p>
+  										Link on Zcha.in<br />
+                      (may not work until the transaction is in a block)<br />
+  										<a class="tx_link" href="https://explorer.zcha.in/transactions/<%= result.txid %>" target="_blank">https://explorer.zcha.in/transactions/<%= result.txid %></a>
+  									</p>
+	                  <a class="button button_green button_back" href="#" onclick="window.history.back();">Go back to your wallet</a>
+
+                <% } else if(status == 'failed') { %>
+
+									<img src="/img/error.svg" class="txstatus_statusimg">
+									<h1>Transaction: <span class="selection_error">Error</span></h1>
+									<p>
+										<span class="selection_error">Error type:</span><br />
+										<%= error.message %>
+									</p>
+									<a class="button button_orange button_back" href="#" onclick="window.history.back();">Go back to your wallet</a>
+                <% } %>
+
+								</div>
+					</div>
+				</div>
+			</main>
+	    <%- include('partials/status-footer') %>
+          <% if(status == 'executing') { %>
+            	<script type="text/javascript">
+
+            		var seconds = 10;
+            		var timer = $('#timer');
+
+            		function counter()
+            		{
+            			seconds -= 1;
+            			timer.html(seconds);
+
+            			if(seconds == 0)
+            			{
+            				clearInterval(counter);
+            				location.reload();
+            			}
+            		}
+
+            		var counter = setInterval(counter, 1000);
+            	</script>
+          <% } %>
+<%- include('partials/footer', {scripts: []}) %>

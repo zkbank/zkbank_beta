@@ -27,7 +27,7 @@ html
 		font-size: 7px;
 	}
 }
-@media(min-width: 1140px)
+@media(min-width: 1600px)
 {
 	html
 	{
@@ -40,7 +40,10 @@ body
 	font-size: 2rem;
 	color: #FFF;
 }
-
+.row-buffer
+{
+	margin-top: 6rem;
+}
 a,
 a:hover,
 a:focus,
@@ -60,6 +63,16 @@ h2
 	font-weight: 300;
 	line-height: 6rem;
 }
+p
+{
+	line-height: 3.75rem;
+}
+p a
+{
+	color: #FF7C32;
+	padding-bottom: 4px;
+	border-bottom: 1px dashed #FF7C32;
+}
 .overlay
 {
 	display: none;
@@ -70,7 +83,7 @@ h2
 	height: 100vh;
 	width: 100%;
 	background-image: linear-gradient(to top, #262626 0%, #303030 100%);
-	opacity: 0.98;
+	opacity: 1;
 }
 .overlay_wrapper
 {
@@ -131,6 +144,24 @@ h2
 {
 	background: #FF8832;
 }
+.button_darkorange
+{
+	background: #BA5B25;
+	color: #FFFFFF;
+}
+.button_darkorange:hover
+{
+	background: #FF8832;
+}
+.button_green
+{
+	background: #146B60;
+	color: #FFFFFF;
+}
+.button_green:hover
+{
+	background: #197569;
+}
 .button_underline
 {
 	border-radius: 0;
@@ -141,12 +172,12 @@ h2
 	padding: 1rem 0;
 	border-bottom: 1px dashed #FFFFFF;
 }
-textarea
+input[type=text], textarea,
+.input_buttoned
 {
 	width: 100%;
-	margin: 1.5rem 0;
-	padding: 2rem 3.5rem;
 	border: 1px solid #1C1C1C;
+	margin: 1.5rem 0;
 	border-radius: 1rem;
 	background: #343434;
 	resize: none;
@@ -157,18 +188,66 @@ textarea
 	line-height: 4rem;
 	color: #949494;
 }
+.input_buttoned
+{
+	position: relative;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+input[type=text]
+{
+	padding: 1.5rem 2.5rem;
+}
+input[type=text]:focus,
+textarea:focus
+{
+	outline:none;
+	-webkit-box-shadow: inset 0px 0px 8px 0px rgba(102,102,102,0.64);
+	-moz-box-shadow: inset 0px 0px 8px 0px rgba(102,102,102,0.64);
+	box-shadow: inset 0px 0px 8px 0px rgba(102,102,102,0.64);
+}
+.input_buttoned input[type=text]
+{
+	width: 100%;
+	padding-left: 7rem;
+	margin: 0;
+	border: none;
+	background: transparent;
+}
+.input_buttoned a
+{
+	position: absolute;
+	content: '';
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: transparent;
+	background-image: url('/img/copy.svg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 3rem;
+	border-radius: 1rem 0 0 1rem;
+	margin-left: -1px;
+	width: 7rem;
+	height: 100%;
+}
+textarea
+{
+	margin: 1.5rem 0;
+	padding: 1.5rem 2.5rem;
+}
 textarea::placeholder {
-color: #626262
+	color: #626262
 }
 
 textarea:-moz-placeholder {
-color: #626262
+	color: #626262
 }
 
 textarea::-moz-placeholder {
-color: #626262;
+	color: #626262;
 }
 
 textarea:-ms-input-placeholder {
-color: #626262
+	color: #626262
 }

@@ -1,0 +1,119 @@
+<%- include('partials/header', {title:'Wallet — Zero-Knowledge Bank', styles:['wallet'], scripts:['qrcode'] }) %>
+			<header>
+				<div class="container">
+					<div class="row flex-row align-items-center">
+						<div class="col">
+              <a href="https://www.zkbank.org/">
+                <img src="/img/logo-white.svg" class="logo">
+              </a>
+						</div>
+						<div class="col d-none d-md-block">
+							<div class="balance-desktop">
+								Balance<br />
+								<span class="balance-desktop_amount"><%= balance %> ZEC</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<main>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="info_block info_block_headed">
+								<div class="info_container">
+									<div class="container">
+										<div class="row">
+											<div class="col">
+												<div class="balance-mobile d-md-none">
+													Balance<br />
+													<span class="balance-mobile_amount"><%= balance %> ZEC</span>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-12 col-md-3 col-lg-2 p-0 d-flex align-items-center justify-content-center">
+												<div class="qrcode_container">
+													<div id="qrcode" class="qrcode"></div>
+													<div class="qrcode_desc"><nobr>Scan this code</nobr> to save <nobr>your address</nobr></div>
+												</div>
+											</div>
+											<div class="col-12 col-md-9 col-lg-10 p-0 d-flex align-items-center">
+												<ul class="form_container data-form_container">
+													<li>
+														<label for="zaddr">Public Address</label>
+														<div class="input_buttoned">
+																<a href="#copy" class="copy-button" data-copy='zaddr'></a>
+																<input id="zaddr" type="text" value="<%= zaddr %>" readonly />
+														</div>
+													</li>
+													<li>
+														<label for="zkey">Private Key</label>
+															<div class="input_buttoned">
+																<a href="#copy" class="copy-button" data-copy='zkey'></a>
+																<input id="zkey" type="text" value="<%= zkey %>" readonly />
+															</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row row-buffer">
+						<div class="col">
+							<div class="info_block info_block_headed">
+								<div class="info_head">
+									Send ZEC
+								</div>
+								<div class="info_container">
+                  <form action="/send" method="POST">
+  									<ul class="form_container">
+  										<li>
+  											<label for="amount">Amount of ZEC</label>
+  											<input type="text" id="amount" name="amount" placeholder="Max. <%= balance %>" autocorrect="off" spellcheck="false" autocomplete="off" />
+  										</li>
+  										<li>
+  											<label for="recepient">Recepient address</label>
+  											<textarea id="recepient" name="to" placeholder="Public address" rows="2"  autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+  										</li>
+  										<li>
+                        <input type="hidden" name="zaddr" value="<%= zaddr %>" />
+                        <input type="hidden" name="zkey" value="<%= zkey %>" />
+  											<button type="submit" class="button button_orange">Send transaction</button>
+  										</li>
+  									</ul>
+                  </form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			<footer>
+				<p>Any problems?<br /> Ask for help on <a href="tg://resolve?domain=zkbank">Telegram (@zkbank)</a></p>
+			</footer>
+	<script type="text/javascript">
+		$('a[data-copy]').click(function(){
+			let el = $('input#' + $(this).attr('data-copy'));
+			el.select();
+			let prev_val = $('input#' + $(this).attr('data-copy')).val();
+			document.execCommand("copy");
+			el.val("Copied!");
+			setTimeout(function(){
+				el.blur();
+				document.getSelection().removeAllRanges();
+				el.val(prev_val);
+			}, 188)
+
+		});
+		new QRCode(document.getElementById("qrcode"),
+				   {
+						text: "<%= zaddr %>",
+						width: 240,
+						height: 240
+				   });
+	</script>
+<%- include('partials/footer', {scripts: []}) %>
