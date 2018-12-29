@@ -8,6 +8,7 @@ function zcashApi(method, params) {
                     o[i==0?'name':'password'] = i
                     return o
                 },{})
+    console.log(node, user)
     const xhr = new xmlh.XMLHttpRequest()
     xhr.open('POST', node, false, user.name, user.password)
     xhr.setRequestHeader('Content-type', 'text/plain');
