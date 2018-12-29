@@ -1,8 +1,15 @@
 const xmlh = require('xmlhttprequest')
 
 function zcashApi(method, params) {
-    let xhr = new xmlh.XMLHttpRequest()
-    xhr.open('POST', 'http://127.0.0.1:8232',false,'denis','020611')
+    const node = process.env.RPCURL
+    const user = process.env.RPCUSER
+                .split(":")
+                .reduce((o,v,i) => {
+                    o[i==0?'name':'password'] = i
+                    return o
+                },{})
+    const xhr = new xmlh.XMLHttpRequest()
+    xhr.open('POST', node, false, user.name, user.password)
     xhr.setRequestHeader('Content-type', 'text/plain');
     console.log(JSON.stringify({
         id: 'test',
@@ -14,9 +21,6 @@ function zcashApi(method, params) {
         params: params || [],
         id: 'test'
     }))
-    let b = `{"id":"test","method":"z_listadresses","params":[]}`
-    // let b = `{"method": "z_exportkey","params":["zs17m3ms6dyjc7k2q7p64h3nj5xtklsu3yedz2rkqzzy0kut8lp5sn6ftg3k2ywxfdpfhjvycuesdc"],"id":"test"}`
-    // xhr.send(b)
     return (xhr.status != 200) ? {
         success : false,
         result: {
